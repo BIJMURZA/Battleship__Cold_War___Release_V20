@@ -1,0 +1,75 @@
+.img_background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.startGame {
+    align-items: center;
+    background-color: white;
+    border: 2px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 32px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rules {
+    align-items: center;
+    background-color: white;
+    border: 2px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 32px;
+    justify-content: center;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.settings {
+    align-items: center;
+    background-color: white;
+    border: 2px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 32px;
+    justify-content: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#modalRules {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalRules-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    text-align: left;
+}

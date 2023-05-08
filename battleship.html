@@ -3,8 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Морской Бой: Холодная Война</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <img class="img_background" src="background/ColdWar_background.png" alt="background">
+    <button id="buttonStartGame" class="startGame" onclick="start()">Начать сражение!</button>
+    <button id="buttonRules" class="rules">Правила</button>
+    <button id="buttonSettings" class="settings">Настройки</button>
+    <div id="modalRules">
+        <div id="modalRules-content">
+            <div class="modal-body">
+                <h1>Товарищ, запомни эти правила!</h1>
+                <p>
+                    Коробли распологаются внутри клеток по такому порядку:
+                </p>
+                <ul>
+                    <li>
+                        1 четырехпалубный линкор, занимающий 4 клеточки
+                    </li>
+                    <li>
+                        2 трехпалубных крейсера по 3 клетки
+                    </li>
+                    <li>
+                        3 двухпалубных эсминца по 2 клетки
+                    </li>
+                    <li>
+                        4 однопалубные шлюпки размером в 1 клетку
+                    </li>
+                </ul>
+                <p>
+                    Корабли не должны соприкасаться друг с другом сторонами либо углами, частично или полностью совпадать! <br>
+                    Корабли располгаются только вертикально или горизонатально! <br>
+                    Первый ход определяется случайной жеребревкой! <br>
+                    Грязные капиталисты должны залить море своей кровью! <br>
+                </p>
+                <p>
+                    Назначение клеток: <br>
+                    <span style="color: red">Красная клетка</span> - расположение корабля союзников<br>
+                    <span style="color: grey">Серая клетка</span> - попадание по кораблю союзников<br>
+                    <span style="color: blue">Синия клетка</span> - попадение по кораблю капиталистов<br>
+                    <span style="color: lawngreen">Зеленая клетка</span> - промах
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
