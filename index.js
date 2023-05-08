@@ -20,20 +20,3 @@ window.onclick = function(event) {
         document.getElementById('modalRules').style.display = 'none';
     }
 }
-
-
-
-function startNewBackground() {
-    document.getElementById("videoBackground").src = "video/ColdWar_Theme.mp4";
-    document.getElementById("videoBackground").play();
-    document.getElementById("audioTheme").src = "ost/ColdWar%20-%20Comrades.mp3";
-    document.getElementById("audioTheme").play();
-
-}
-
-function start() {
-    document.getElementById("buttonStartGame").remove();
-    document.getElementById("buttonRules").remove();
-    document.getElementById("buttonSettings").remove();
-    startNewBackground();
-}
