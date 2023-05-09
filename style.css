@@ -9,6 +9,17 @@
     object-position: center;
 }
 
+.video_background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+}
+
 .startGame {
     align-items: center;
     background-color: white;
@@ -93,4 +104,80 @@
     border: 1px solid #888;
     width: 10%;
     text-align: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+table {
+    border-collapse: collapse;
+    margin: 0 20px;
+    font-size: 5px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.hidden_id {
+    color: transparent;
+}
+
+
+.battlefield {
+    display: flex;
+    -webkit-user-select: none;
+}
+
+.USSR {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NATO {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#img_USSR {
+    display: none;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+#img_NATO {
+    display: none;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+#arrow {
+    width: 128px;
+    height: 128px;
+    display:none;
+    margin:auto;
+}
+
+#out {
+    display: none;
+    font-size: 32px;
+    color: white;
 }
