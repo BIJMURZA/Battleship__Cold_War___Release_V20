@@ -3,6 +3,8 @@ let fships = 4; // количество клеток для Линкора (4-х
 let thships = 6; // количество клеток для Крейсера (3-х палубный корабль)
 let twships = 6; // количество клеток для Эсминцев (2-х палубный корабль)
 let shlupki = 4; // количество клеток для Шлюпки (1 палубный корабль)
+let alships = 20; //общее количество клеток союзников
+let enships = 20; //общее количество клеток врага
 let begin = null;
 let left = null;
 let right = null;
@@ -27,8 +29,8 @@ let allaybattlefield = [
 ]; // поле союзника
 
 let enemybattlefield = [
-    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
-    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+    [1, 0, 0, 0, 1, 0, 1, 0, 0, 1],
+    [1, 0, 0, 0, 1, 0, 1, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -269,15 +271,15 @@ function esminec (event) {
 function shlupka (event) {
     let x = Math.floor(( parseInt(event.target.id) - 1) / 10);
     let y = (parseInt(event.target.id) - 1) % 10;
-    if (shlupki >= 1) {
+    if (shlupki > 0) {
         if (check(x,y) === true) {
             document.getElementById(event.target.id).style.background = 'red';
             allaybattlefield[x][y] = 1;
             shlupki --;
-            if (shlupki === 1) {
-                ships --;
-            }
         }
+    }
+    if (shlupki === 0) {
+        ships --;
     }
     locate_albattlefield();
 }
@@ -287,18 +289,7 @@ function checkNbattlefield (x, y) {
 }
 
 function checkUbattlefield (x, y) {
-    return enemybattlefield[x][y] === 1 || enemybattlefield[x][y] === 2;
-}
-
-function checkEndGame() {
-    if (enemybattlefield.includes('1') === true) {
-        alert("ПОБЕДА ТОВАРИЩИ!");
-        window.location.reload();
-    }
-    if (allaybattlefield.includes("1") === false) {
-        alert("КАПИТАЛИСТЫ ВЫЙГРАЛИ!");
-        window.location.reload();
-    }
+    return allaybattlefield[x][y] === 1 || allaybattlefield[x][y] === 2;
 }
 
 function shoot(event) {
@@ -308,7 +299,7 @@ function shoot(event) {
         if (checkNbattlefield(x, y) === true){
             document.getElementById(event.target.id).style.background = "blue";
             enemybattlefield[x][y] = 2;
-            checkEndGame()
+            enships--;
             shootUSSR();
         }
         else {
@@ -322,11 +313,11 @@ function shoot(event) {
         let y = ((parseInt(event) % 100) - 1) % 10;
         if (checkUbattlefield(x, y) === true) {
             document.getElementById(event).style.background = "gray";
-            allaybattlefield[x][y] = 0;
+            allaybattlefield[x][y] = 2;
+            alships--;
             shootNATO();
         }
         else {
-
             document.getElementById(event).style.background = "green";
             document.getElementById("arrow").src = "/picture/lot_USSR.png"
             move = 1;
@@ -340,11 +331,23 @@ function shootUSSR() {
         event.stopPropagation();
     });
     document.getElementById("enbattlefield").addEventListener("click", shoot);
+    if (enships === 0) {
+        document.getElementById("audioVoice").src = "voice/Win!.mp3";
+        document.getElementById("audioVoice").play();
+        alert("ПОБЕДА ТОВАРИЩИ!")
+        window.location.reload();
+    }
 }
 
 function shootNATO() {
     let id = Math.floor(Math.random()*100) + 1;
     shoot(String(id));
+    if (alships === 0) {
+        document.getElementById("audioVoice").src = "voice/Lose!.mp3";
+        document.getElementById("audioVoice").play();
+        alert("ПОРАЖЕНИЕ!")
+        window.location.reload();
+    }
 }
 
 function startShoot() {
@@ -379,6 +382,10 @@ function locate_albattlefield() {
     }
     if (ships === 0) {
         document.getElementById("out").remove();
+        document.getElementById("audioVoice").src = "voice/ZaRodiny!.mp3";
+        document.getElementById("audioVoice").play();
+        document.getElementById("audioTheme").src = "ost/Rising-Tide.mp3";
+        document.getElementById("audioTheme").play();
         startShoot();
     }
 }
